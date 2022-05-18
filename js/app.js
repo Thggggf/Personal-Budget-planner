@@ -14,7 +14,10 @@ const savings = document.querySelector("#savings")
 const savingsSum = document.querySelector("#sum")
 const savingsPercent = document.querySelector("#percent")
 const timeData = document.querySelector(".time-data").querySelectorAll("input")
-
+buttons.forEach((el) => {
+    el.disabled = true;
+})
+start.disabled = false
 compulsaryExpensesBtn.addEventListener("click", function () {
     // при клике запускаеться функция
     let sum = 0; // переменная суммы собирает все ценники что ввел ползователь
@@ -51,7 +54,7 @@ optionalExpensesBtn.addEventListener("click", function () {
 })
 
 countBudgetBtn.addEventListener("click", () => {
-    if (!appData.budget || !resultsValuesList[3]) { alert("Для расчёта дневного бюджета, требуется утвердить обязательные расходы и доход (Нажмите 'Начать расчёт')"); resultsValuesList[2].textContent = "Произошла ошибка"; return null }
+    if (!appData.budget || !resultsValuesList[3]) { alert("Для расчёта дневного бюджета, требуется утвердить обязательные расходы и доход."); resultsValuesList[2].textContent = "Произошла ошибка"; return null }
     appData.dailyBudget = appData.detectDailyBudget()
     resultsValuesList[1].textContent = appData.dailyBudget
     if (appData.dailyBudget > 1750) {
@@ -105,6 +108,9 @@ const appData = {
 
 
 start.addEventListener("click", () => {
+    buttons.forEach((el) => {
+        el.disabled = false;
+    })
     time = prompt("Введите дату в формате YYYY-MM-DD")
     money = +prompt("Ваш бюджет на месяц")
 
