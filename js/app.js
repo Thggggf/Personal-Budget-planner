@@ -51,7 +51,7 @@ optionalExpensesBtn.addEventListener("click", function () {
 })
 
 countBudgetBtn.addEventListener("click", () => {
-    if (!appData.budget || !resultsValuesList[3]) { alert("Для расчёта дневного бюджета, требуется утвердить обязательные расходы и доход"); resultsValuesList[2].textContent = "Произошла ошибка"; return null }
+    if (!appData.budget || !resultsValuesList[3]) { alert("Для расчёта дневного бюджета, требуется утвердить обязательные расходы и доход (Нажмите 'Начать расчёт')"); resultsValuesList[2].textContent = "Произошла ошибка"; return null }
     appData.dailyBudget = appData.detectDailyBudget()
     resultsValuesList[1].textContent = appData.dailyBudget
     if (appData.dailyBudget > 1750) {
